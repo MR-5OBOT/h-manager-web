@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="robots" content="noindex" />
+    <title>H-manager</title>
+    <!-- Expo's default page, painted black so the 4 MB bundle loads without a white flash. -->
+    <style id="expo-reset">
+      html,
+      body {
+        height: 100%;
+        background: #000;
+        color-scheme: dark;
+      }
+      body {
+        overflow: hidden;
+      }
+      #root {
+        display: flex;
+        height: 100%;
+        flex: 1;
+      }
+      /* Slim scrollbars: Chromium/Safari via the pseudo-elements (no arrow
+         buttons), Firefox via the standard properties. */
+      ::-webkit-scrollbar {
+        width: 3px;
+        height: 3px;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #333;
+        border-radius: 2px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
+      ::-webkit-scrollbar-track,
+      ::-webkit-scrollbar-corner {
+        background: transparent;
+      }
+      @supports not selector(::-webkit-scrollbar) {
+        * {
+          scrollbar-width: thin;
+          scrollbar-color: #333 transparent;
+        }
+      }
+    </style>
+  <link rel="icon" href="/h-manager-web/favicon.ico"/></head>
+
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  <script src="/h-manager-web/_expo/static/js/web/entry-1f96359b0574f8651ee84fa44226d537.js" defer></script>
+</body>
+</html>
