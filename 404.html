@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; media-src 'self' blob:; connect-src 'self' data: blob: https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://firestore.googleapis.com https://h-manager-viewer.yassir7m7.workers.dev; base-uri 'none'; object-src 'none'; form-action 'none'" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="robots" content="noindex" />
+    <meta name="referrer" content="no-referrer" />
+    <title>H-manager</title>
+    <!-- The app's first requests after the bundle go to these hosts; their
+         connections open while it downloads instead of after. -->
+    <link rel="preconnect" href="https://identitytoolkit.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://securetoken.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://firestore.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://h-manager-viewer.yassir7m7.workers.dev" crossorigin />
+    <!-- Expo's default page, painted black so the 4 MB bundle loads without a white flash. -->
+    <style id="expo-reset">
+      html,
+      body {
+        height: 100%;
+        background: #000;
+        color-scheme: dark;
+      }
+      body {
+        /* react-native-web zeroes this only once the bundle runs; until then
+           the default 8px shifted the first-paint poster. */
+        margin: 0;
+        overflow: hidden;
+      }
+      #root {
+        display: flex;
+        height: 100%;
+        flex: 1;
+      }
+      /* Until the bundle runs, show the loading film's first frame, dimmed and
+         captioned like the film, so the wait is the loading screen from the
+         first paint. scripts/web.sh makes the image path absolute so deep
+         links (served as 404.html) find it too. */
+      #root:empty {
+        position: relative;
+        background: linear-gradient(#0006, #0006), #000 url(/h-manager-web/media/loading.jpg) center / cover no-repeat;
+      }
+      #root:empty::after {
+        content: 'Loading…';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 8%;
+        text-align: center;
+        color: #fff;
+        font: 16px Georgia, serif;
+        text-shadow: 0 1px 6px #000;
+      }
+      /* Slim scrollbars: Chromium/Safari via the pseudo-elements (no arrow
+         buttons), Firefox via the standard properties. */
+      ::-webkit-scrollbar {
+        width: 3px;
+        height: 3px;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #333;
+        border-radius: 2px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
+      ::-webkit-scrollbar-track,
+      ::-webkit-scrollbar-corner {
+        background: transparent;
+      }
+      @supports not selector(::-webkit-scrollbar) {
+        * {
+          scrollbar-width: thin;
+          scrollbar-color: #333 transparent;
+        }
+      }
+    </style>
+  <link rel="icon" href="/h-manager-web/favicon.ico"/></head>
+
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  <script src="/h-manager-web/_expo/static/js/web/entry-14fa40c33d1df6cb33949e7c0497c0ed.js" defer></script>
+</body>
+</html>
