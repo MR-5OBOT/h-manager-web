@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; media-src 'self' blob:; connect-src 'self' data: blob: https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://firestore.googleapis.com https://h-manager-viewer.yassir7m7.workers.dev; base-uri 'none'; object-src 'none'; form-action 'none'" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="robots" content="noindex" />
+    <meta name="referrer" content="no-referrer" />
+    <title>H-manager</title>
+    <!-- The app's first requests after the bundle go to these hosts; their
+         connections open while it downloads instead of after. -->
+    <link rel="preconnect" href="https://identitytoolkit.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://securetoken.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://firestore.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://h-manager-viewer.yassir7m7.workers.dev" crossorigin />
+    <!-- Expo's default page, painted black so the 4 MB bundle loads without a white flash. -->
+    <style id="expo-reset">
+      html,
+      body {
+        height: 100%;
+        background: #000;
+        color-scheme: dark;
+      }
+      body {
+        /* react-native-web zeroes this only once the bundle runs; until then
+           the default 8px shifted the first-paint poster. */
+        margin: 0;
+        overflow: hidden;
+      }
+      #root {
+        display: flex;
+        height: 100%;
+        flex: 1;
+      }
+      /* The loading screen: an accent-purple ring (src/constants/theme.ts). It
+         lives here so it shows from the first paint, while the 4 MB app
+         downloads; the app's own (src/components/webLoading.tsx) reuses these
+         classes and takes over at the same angle. Only a transform animates,
+         so the browser keeps it turning even while the app's JavaScript is
+         busy. */
+      .hm-loading {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 22px;
+        background: #000;
+      }
+      /* The app's starfield film behind the ring, blurred like its backdrop
+         (src/components/spaceBackground.web.tsx). The file is stored at
+         quarter speed, so it plays slowly with no script. */
+      .hm-loading-bg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: blur(10px) brightness(0.6);
+        transform: scale(1.06);
+      }
+      .hm-spinner,
+      .hm-loading p {
+        position: relative;
+      }
+      .hm-spinner {
+        width: 44px;
+        height: 44px;
+        box-sizing: border-box;
+        border: 3px solid #211E2D;
+        border-top-color: #7370D2;
+        border-radius: 50%;
+        animation: hm-spin 0.9s linear infinite;
+      }
+      .hm-loading p {
+        margin: 0;
+        color: #b8b6f0;
+        font: 12px Georgia, serif;
+        letter-spacing: 0.32em;
+        text-transform: uppercase;
+      }
+      @keyframes hm-spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      /* Reduced motion: slower, not stopped; a still ring would look stuck. */
+      @media (prefers-reduced-motion: reduce) {
+        .hm-spinner {
+          animation-duration: 2.4s;
+        }
+        .hm-loading-bg {
+          display: none;
+        }
+      }
+      /* Slim scrollbars: Chromium/Safari via the pseudo-elements (no arrow
+         buttons), Firefox via the standard properties. */
+      ::-webkit-scrollbar {
+        width: 3px;
+        height: 3px;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #333;
+        border-radius: 2px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
+      ::-webkit-scrollbar-track,
+      ::-webkit-scrollbar-corner {
+        background: transparent;
+      }
+      @supports not selector(::-webkit-scrollbar) {
+        * {
+          scrollbar-width: thin;
+          scrollbar-color: #333 transparent;
+        }
+      }
+    </style>
+  <link rel="icon" href="/h-manager-web/favicon.ico"/></head>
+
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <div id="hm-boot" class="hm-loading" role="status" aria-label="Loading">
+      <video class="hm-loading-bg" src="/h-manager-web/media/h-manager-bg.mp4" autoplay muted loop playsinline preload="auto" aria-hidden="true" tabindex="-1"></video>
+      <div class="hm-spinner" aria-hidden="true"></div>
+      <p>Loading…</p>
+    </div>
+  <script src="/h-manager-web/_expo/static/js/web/entry-862c58f927dc8efe74deef8c9ba54f8b.js" defer></script>
+</body>
+</html>
